@@ -25,15 +25,17 @@ In your project's Gruntfile, add a section named `inline_angular_templates` to t
 ```js
 grunt.initConfig({
     inline_angular_templates: {
-        options: {
-            base: 'dist/views',
-            prefix: '/'
-        },
-        files: {
-            'dist/index.html': [
-                'dist/views/template1.html',
-                'dist/views/template2.html'
-            ]
+        dist: {
+            options: {
+                base: 'dist/views',
+                prefix: '/'
+            },
+            files: {
+                'dist/index.html': [
+                    'dist/views/template1.html',
+                    'dist/views/template2.html'
+                ]
+            }
         }
     }
 })
