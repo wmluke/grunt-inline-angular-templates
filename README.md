@@ -27,18 +27,39 @@ grunt.initConfig({
     inline_angular_templates: {
         dist: {
             options: {
-                base: 'dist/views',
-                prefix: '/'
+                base: 'dist/templates', // (Optional) ID of the <script> tag will be relative to this folder
+                prefix: '/'             // (Optional) Prefix path to the ID
             },
             files: {
-                'dist/index.html': [
-                    'dist/views/template1.html',
-                    'dist/views/template2.html'
-                ]
+                'dist/index.html': ['dist/templates/views/*.html']
             }
         }
     }
 })
+```
+
+This will prepend the template files into the body of `dist/index.html` something like...
+
+```html
+<html>
+<body>
+<!-- Begin Templates -->
+<script type="text/ng-template" id="/views/template1.html">
+<div>
+    <h1>Template 1</h1>
+</div>
+</script>
+
+<script type="text/ng-template" id="/views/template2.html">
+<div>
+    <h1>Template 2</h1>
+</div>
+</script>
+<!-- End Templates -->
+
+<div ng-view></div>
+</body>
+</html>
 ```
 
 ### Options
@@ -47,13 +68,13 @@ grunt.initConfig({
 Type: `String`
 Default value: Grunt working folder
 
-Relative folder
+ID of the <script> tag will be relative to this folder
 
 #### options.prefix
 Type: `String`
 Default value: `''`
 
-ID url prefix
+Prefix path to the ID
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
