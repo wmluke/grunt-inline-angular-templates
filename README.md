@@ -68,11 +68,11 @@ This will prepend the template files into the body of `dist/index.html` somethin
 Type: `String`
 Default value: Grunt working folder
 
-ID of the <script> tag will be relative to this folder
+ID of the `<script>` tag will be relative to this folder
 
 #### options.prefix
 Type: `String`
-Default value: `''`
+Default value: Empty string
 
 Prefix path to the ID
 
