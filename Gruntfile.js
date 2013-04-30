@@ -30,20 +30,29 @@ module.exports = function (grunt) {
         copy: {
             fixtures: {
                 files: [
-                    {src: ['test/fixtures/index.html'], dest: 'tmp/index.html'}
+                    {src: ['test/fixtures/index.html'], dest: 'tmp/custom.html'},
+                    {src: ['test/fixtures/index.html'], dest: 'tmp/default.html'}
                 ]
             }
         },
 
         // Configuration to be run (and then tested).
         inline_angular_templates: {
-            options: {
-                base: 'test/fixtures',
-                prefix: '/'
-            },
-            dist: {
+            default: {
                 files: {
-                    'tmp/index.html': [
+                    'tmp/default.html': [
+                        'test/fixtures/templates/template1.html',
+                        'test/fixtures/templates/template2.html'
+                    ]
+                }
+            },
+            custom: {
+                options: {
+                    base: 'test/fixtures',
+                    prefix: '/'
+                },
+                files: {
+                    'tmp/custom.html': [
                         'test/fixtures/templates/template1.html',
                         'test/fixtures/templates/template2.html'
                     ]
