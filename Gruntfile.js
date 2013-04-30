@@ -23,9 +23,16 @@ module.exports = function (grunt) {
             }
         },
 
-        // Before generating any new files, remove any previously-created files.
         clean: {
             tests: ['tmp']
+        },
+
+        copy: {
+            fixtures: {
+                files: [
+                    {src: ['test/fixtures/index.html'], dest: 'tmp/index.html'}
+                ]
+            }
         },
 
         // Configuration to be run (and then tested).
@@ -36,7 +43,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    'test/fixtures/index.html': [
+                    'tmp/index.html': [
                         'test/fixtures/templates/template1.html',
                         'test/fixtures/templates/template2.html'
                     ]
@@ -58,10 +65,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
-    grunt.registerTask('test', ['clean', 'inline_angular_templates', 'nodeunit']);
+    grunt.registerTask('test', ['clean', 'copy', 'inline_angular_templates', 'nodeunit']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'test']);
