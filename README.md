@@ -25,19 +25,46 @@ In your project's Gruntfile, add a section named `inline_angular_templates` to t
 ```js
 grunt.initConfig({
     inline_angular_templates: {
-        options: {
-            base: 'dist/views',
-            prefix: '/'
-        },
-        files: {
-            'dist/index.html': [
-                'dist/views/template1.html',
-                'dist/views/template2.html'
-            ]
+        dist: {
+            options: {
+                base: 'dist/templates', // (Optional) ID of the <script> tag will be relative to this folder. Default is project dir.
+                prefix: '/',            // (Optional) Prefix path to the ID. Default is empty string.
+                selector: 'body',       // (Optional) CSS selector of the element to use to insert the templates. Default is `body`.
+                method: 'prepend'       // (Optional) DOM insert method. Default is `prepend`.
+            },
+            files: {
+                'dist/index.html': ['dist/templates/views/*.html']
+            }
         }
     }
 })
 ```
+
+This will prepend the template files into the body of `dist/index.html` something like...
+
+```html
+<html>
+<body>
+<!-- Begin Templates -->
+<script type="text/ng-template" id="/views/template1.html">
+<div>
+    <h1>Template 1</h1>
+</div>
+</script>
+
+<script type="text/ng-template" id="/views/template2.html">
+<div>
+    <h1>Template 2</h1>
+</div>
+</script>
+<!-- End Templates -->
+
+<div ng-view></div>
+</body>
+</html>
+```
+
+If bundling templates into a JS file is more your thing, check out https://github.com/ericclemmons/grunt-angular-templates.
 
 ### Options
 
@@ -45,13 +72,26 @@ grunt.initConfig({
 Type: `String`
 Default value: Grunt working folder
 
-Relative folder
+ID of the `<script>` tag will be relative to this folder
 
 #### options.prefix
 Type: `String`
-Default value: `''`
+Default value: Empty string
 
-ID url prefix
+Append this prefix to the template ID.
+
+#### options.selector
+Type: `String`
+Default value: 'body'
+
+The CSS selector of the element to use to insert the templates.
+
+#### options.method
+Type: `String`
+Values: append | prepend | replaceWith | after | before
+Default value: 'prepend'
+
+The DOM method used to insert the templates.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
