@@ -33,8 +33,8 @@ module.exports = function (grunt) {
                     }
                 })
                 .map(function (filepath) {
-                    var relPath = path.join(options.prefix, path.relative(options.base, filepath)).replace(/\\/g, '/');
-                    return '<script type="text/ng-template" id="' + relPath + '">\n' + grunt.file.read(filepath) + '\n</script>';
+                    var templateUrl = path.join(options.prefix, path.relative(options.base, filepath)).replace(/\\/g, '/');
+                    return '<script type="text/ng-template" id="' + templateUrl + '">\n' + grunt.file.read(filepath) + '\n</script>';
                 }).join('\n\n');
 
             var $ = cheerio.load(grunt.file.read(f.dest), {
