@@ -33,7 +33,7 @@ module.exports = function (grunt) {
                     }
                 })
                 .map(function (filepath) {
-                    var relPath = path.join(options.prefix, path.relative(options.base, filepath));
+                    var relPath = path.join(options.prefix, path.relative(options.base, filepath)).replace(/\\/g, '/');
                     return '<script type="text/ng-template" id="' + relPath + '">\n' + grunt.file.read(filepath) + '\n</script>';
                 }).join('\n\n');
 
