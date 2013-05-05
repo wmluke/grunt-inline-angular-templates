@@ -13,15 +13,20 @@
         <script src="/scripts/vendor/0e15c528.modernizr.js"></script>
     </head>
     <body ng-app="boots-app">
+        <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+
 
 <!-- Begin Templates -->
-<script type="text/ng-template" id="test/fixtures/templates/template1.html">
+<script type="text/ng-template" id="/templates/template1.html">
 <div>
     <h1>Template 1</h1>
 </div>
 </script>
 
-<script type="text/ng-template" id="test/fixtures/templates/template2.html">
+<script type="text/ng-template" id="/templates/template2.html">
 <div>
     <h1>Template 2</h1>
 </div>
@@ -29,9 +34,6 @@
 <!-- End Templates -->
 
 
-        <!--[if lt IE 7]>
-        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
 
         <!--[if lt IE 9]>
         <script src="/components/es5-shim/es5-shim.js"></script>

@@ -16,7 +16,9 @@ module.exports = function (grunt) {
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
             base: process.cwd(),
-            prefix: ''
+            prefix: '',
+            selector: 'body',
+            method: 'prepend'
         });
 
         // Iterate over all specified file groups.
@@ -43,7 +45,9 @@ module.exports = function (grunt) {
                 lowerCaseTags: false
             });
 
-            $('body').prepend('\n\n<!-- Begin Templates -->\n' + src + '\n<!-- End Templates -->\n\n');
+            var $elem = $(options.selector);
+            var method = $elem[options.method] || $elem.prepend;
+            method.call($elem, '\n\n<!-- Begin Templates -->\n' + src + '\n<!-- End Templates -->\n\n');
 
             grunt.file.write(f.dest, $.html());
 

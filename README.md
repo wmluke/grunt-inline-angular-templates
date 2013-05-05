@@ -27,8 +27,10 @@ grunt.initConfig({
     inline_angular_templates: {
         dist: {
             options: {
-                base: 'dist/templates', // (Optional) ID of the <script> tag will be relative to this folder
-                prefix: '/'             // (Optional) Prefix path to the ID
+                base: 'dist/templates', // (Optional) ID of the <script> tag will be relative to this folder. Default is project dir.
+                prefix: '/',            // (Optional) Prefix path to the ID. Default is empty string.
+                selector: 'body',       // (Optional) CSS selector of the element to use to insert the templates. Default is `body`.
+                method: 'prepend'       // (Optional) DOM insert method. Default is `prepend`.
             },
             files: {
                 'dist/index.html': ['dist/templates/views/*.html']
@@ -62,6 +64,8 @@ This will prepend the template files into the body of `dist/index.html` somethin
 </html>
 ```
 
+If bundling templates into a JS file is more your thing, check out https://github.com/ericclemmons/grunt-angular-templates.
+
 ### Options
 
 #### options.base
@@ -74,7 +78,20 @@ ID of the `<script>` tag will be relative to this folder
 Type: `String`
 Default value: Empty string
 
-Prefix path to the ID
+Append this prefix to the template ID.
+
+#### options.selector
+Type: `String`
+Default value: 'body'
+
+The CSS selector of the element to use to insert the templates.
+
+#### options.method
+Type: `String`
+Values: append | prepend | replaceWith | after | before
+Default value: 'prepend'
+
+The DOM method used to insert the templates.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).

@@ -30,8 +30,11 @@ module.exports = function (grunt) {
         copy: {
             fixtures: {
                 files: [
-                    {src: ['test/fixtures/index.html'], dest: 'tmp/custom.html'},
-                    {src: ['test/fixtures/index.html'], dest: 'tmp/default.html'}
+                    {src: ['test/fixtures/index.html'], dest: 'tmp/default.html'},
+                    {src: ['test/fixtures/index.html'], dest: 'tmp/custom-replaceWith.html'},
+                    {src: ['test/fixtures/index.html'], dest: 'tmp/custom-append.html'},
+                    {src: ['test/fixtures/index.html'], dest: 'tmp/custom-before.html'},
+                    {src: ['test/fixtures/index.html'], dest: 'tmp/custom-after.html'}
                 ]
             }
         },
@@ -46,13 +49,57 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            custom: {
+            custom_replaceWith: {
                 options: {
                     base: 'test/fixtures',
-                    prefix: '/'
+                    prefix: '/',
+                    selector: '#templates',
+                    method: 'replaceWith'
                 },
                 files: {
-                    'tmp/custom.html': [
+                    'tmp/custom-replaceWith.html': [
+                        'test/fixtures/templates/template1.html',
+                        'test/fixtures/templates/template2.html'
+                    ]
+                }
+            },
+            custom_append: {
+                options: {
+                    base: 'test/fixtures',
+                    prefix: '/',
+                    selector: '#templates',
+                    method: 'append'
+                },
+                files: {
+                    'tmp/custom-append.html': [
+                        'test/fixtures/templates/template1.html',
+                        'test/fixtures/templates/template2.html'
+                    ]
+                }
+            },
+            custom_before: {
+                options: {
+                    base: 'test/fixtures',
+                    prefix: '/',
+                    selector: '#templates',
+                    method: 'before'
+                },
+                files: {
+                    'tmp/custom-before.html': [
+                        'test/fixtures/templates/template1.html',
+                        'test/fixtures/templates/template2.html'
+                    ]
+                }
+            },
+            custom_after: {
+                options: {
+                    base: 'test/fixtures',
+                    prefix: '/',
+                    selector: '#templates',
+                    method: 'after'
+                },
+                files: {
+                    'tmp/custom-after.html': [
                         'test/fixtures/templates/template1.html',
                         'test/fixtures/templates/template2.html'
                     ]
