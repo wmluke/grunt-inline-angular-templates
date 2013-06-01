@@ -2,7 +2,7 @@
 
 > Inline angular templates into an HTML file
 
-[![Build Status](https://travis-ci.org/wmluke/grunt-inline-angular-templates.png?branch=develop)](https://travis-ci.org/wmluke/grunt-inline-angular-templates)
+[![Build Status](https://travis-ci.org/wmluke/grunt-inline-angular-templates.png?branch=master)](https://travis-ci.org/wmluke/grunt-inline-angular-templates)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
