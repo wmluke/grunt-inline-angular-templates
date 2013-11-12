@@ -55,6 +55,14 @@ exports.inline_angular_templates = {
         test.equal(stripBlankLines(actual), stripBlankLines(expected));
 
         test.done();
+    },
+    no_munging_attribute_names: function (test) {
+        test.expect(1);
+
+        var actual = grunt.file.read('tmp/no-munging-attribute-names.html');
+        test.ok(actual.indexOf('data-ng-app')!==-1, 'attribute names should not be munged');
+
+        test.done();
     }
 
 };

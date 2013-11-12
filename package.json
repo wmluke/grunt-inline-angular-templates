@@ -1,7 +1,7 @@
 {
     "name": "grunt-inline-angular-templates",
     "description": "Inline angular templates into an HTML file",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "homepage": "https://github.com/wmluke/grunt-inline-angular-templates",
     "author": {
         "name": "Luke Bunselmeyer",
@@ -29,7 +29,7 @@
         "test": "grunt test"
     },
     "dependencies": {
-        "cheerio": "~0.12.2"
+        "cheerio": "~0.12.4"
     },
     "devDependencies": {
         "grunt-contrib-jshint": "~0.1.1",
