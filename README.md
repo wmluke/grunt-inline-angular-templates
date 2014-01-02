@@ -3,6 +3,7 @@
 > Inline angular templates into an HTML file
 
 [![Build Status](https://travis-ci.org/wmluke/grunt-inline-angular-templates.png?branch=master)](https://travis-ci.org/wmluke/grunt-inline-angular-templates)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/wmluke/grunt-inline-angular-templates/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
