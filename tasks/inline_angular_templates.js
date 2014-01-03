@@ -18,7 +18,8 @@ module.exports = function (grunt) {
             base: process.cwd(),
             prefix: '',
             selector: 'body',
-            method: 'prepend'
+            method: 'prepend',
+            defer: false
         });
 
         // Iterate over all specified file groups.
@@ -35,8 +36,10 @@ module.exports = function (grunt) {
                     }
                 })
                 .map(function (filepath) {
-                    var templateUrl = path.join(options.prefix, path.relative(options.base, filepath)).replace(/\\/g, '/');
-                    return '<script type="text/ng-template" id="' + templateUrl + '">\n' + grunt.file.read(filepath) + '\n</script>';
+                    var templateUrl = path.join(options.prefix, path.relative(options.base, filepath)).replace(/\\/g, '/'),
+                        deferModifier = options.defer ? ' defer ' : '';
+
+                    return '<script type="text/ng-template" ' + deferModifier + 'id="' + templateUrl + '">\n' + grunt.file.read(filepath) + '\n</script>';
                 }).join('\n\n');
 
             var $ = cheerio.load(grunt.file.read(f.dest), {
