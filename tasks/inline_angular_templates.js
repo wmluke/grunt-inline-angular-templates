@@ -18,7 +18,8 @@ module.exports = function (grunt) {
             base: process.cwd(),
             prefix: '',
             selector: 'body',
-            method: 'prepend'
+            method: 'prepend',
+            unescape: false
         });
 
         // Iterate over all specified file groups.
@@ -48,8 +49,20 @@ module.exports = function (grunt) {
             var $elem = $(options.selector);
             var method = $elem[options.method] || $elem.prepend;
             method.call($elem, '\n\n<!-- Begin Templates -->\n' + src + '\n<!-- End Templates -->\n\n');
-
-            grunt.file.write(f.dest, $.html());
+            var html = $.html();
+            if(options.unescape){
+              var unescape_regexp = /(&lt;|&gt;|&apos;)/g;
+              var match_cases = {
+                "&lt;": "<",
+                "&gt;": ">",
+                "&apos;": "'"
+              }
+              var _getUnescapedChar = function(match){
+                return match_cases[match];
+              };
+              html = $.html().replace(unescape_regexp, _getUnescapedChar);
+            }
+            grunt.file.write(f.dest, html);
 
             grunt.log.writeln('Templates inserted into "' + f.dest + '".');
         });
