@@ -51,12 +51,13 @@ module.exports = function (grunt) {
             method.call($elem, '\n\n<!-- Begin Templates -->\n' + src + '\n<!-- End Templates -->\n\n');
             var html = $.html();
             if(options.unescape){
-              var unescape_regexp = /(&lt;|&gt;|&apos;)/g;
+              var unescape_regexp = /(&lt;|&gt;|&apos;|&amp;)/g;
               var match_cases = {
                 "&lt;": "<",
                 "&gt;": ">",
-                "&apos;": "'"
-              }
+                "&apos;": "'",
+                "&amp;": "&"
+              };
               var _getUnescapedChar = function(match){
                 return match_cases[match];
               };
