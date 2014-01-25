@@ -34,6 +34,12 @@ grunt.initConfig({
                 prefix: '/',            // (Optional) Prefix path to the ID. Default is empty string.
                 selector: 'body',       // (Optional) CSS selector of the element to use to insert the templates. Default is `body`.
                 method: 'prepend'       // (Optional) DOM insert method. Default is `prepend`.
+                unescape: {             // (Optional) List of escaped characters to unescape
+                    '&lt;': '<',
+                    '&gt;': '>',
+                    '&apos;': '\'',
+                    '&amp;': '&'
+                }
             },
             files: {
                 'dist/index.html': ['dist/templates/views/*.html']
@@ -95,6 +101,12 @@ Values: append | prepend | replaceWith | after | before
 Default value: 'prepend'
 
 The DOM method used to insert the templates.
+
+#### options.unescape
+Type: `Object`
+Default value: '{}'
+
+List of escaped characters to unescape.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
