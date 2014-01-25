@@ -19,8 +19,34 @@ module.exports = function (grunt) {
             prefix: '',
             selector: 'body',
             method: 'prepend',
-            unescape: false
+            unescape: {}
         });
+
+        // Replace characters according to 'unescape' option
+        var unescapeCharacters = function(raw_html){
+          var match_keys = Object.keys(options.unescape);
+          var unescaped_html = raw_html;
+          // Generating RegExp from 'option.unescape' keys
+          var _generateRegexp = function(chars){
+            var ribbon = "";
+            chars.forEach(function(item, index){
+              ribbon += item;
+              if(index !== chars.length - 1){
+                ribbon += "|";
+              }
+            });
+            return new RegExp("(" + ribbon + ")", "g");
+          };
+          // Get substitution character
+          var _fitCharacter = function(match){
+            return options.unescape[match];
+          };
+          if(match_keys.length > 0){
+            var pattern = _generateRegexp(match_keys)
+            unescaped_html = raw_html.replace(pattern, _fitCharacter)
+          };
+          return unescaped_html;
+        };
 
         // Iterate over all specified file groups.
         this.files.forEach(function (f) {
@@ -49,20 +75,7 @@ module.exports = function (grunt) {
             var $elem = $(options.selector);
             var method = $elem[options.method] || $elem.prepend;
             method.call($elem, '\n\n<!-- Begin Templates -->\n' + src + '\n<!-- End Templates -->\n\n');
-            var html = $.html();
-            if(options.unescape){
-              var unescape_regexp = /(&lt;|&gt;|&apos;|&amp;)/g;
-              var match_cases = {
-                "&lt;": "<",
-                "&gt;": ">",
-                "&apos;": "'",
-                "&amp;": "&"
-              };
-              var _getUnescapedChar = function(match){
-                return match_cases[match];
-              };
-              html = $.html().replace(unescape_regexp, _getUnescapedChar);
-            }
+            var html = unescapeCharacters($.html());
             grunt.file.write(f.dest, html);
 
             grunt.log.writeln('Templates inserted into "' + f.dest + '".');
