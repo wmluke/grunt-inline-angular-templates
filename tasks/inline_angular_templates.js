@@ -42,9 +42,9 @@ module.exports = function (grunt) {
             return options.unescape[match];
           };
           if(match_keys.length > 0){
-            var pattern = _generateRegexp(match_keys)
-            unescaped_html = raw_html.replace(pattern, _fitCharacter)
-          };
+            var pattern = _generateRegexp(match_keys);
+            unescaped_html = raw_html.replace(pattern, _fitCharacter);
+          }
           return unescaped_html;
         };
 
