@@ -6,9 +6,8 @@
  * Licensed under the MIT license.
  */
 
-'use strict';
-
 module.exports = function (grunt) {
+    'use strict';
 
     // Project configuration.
     grunt.initConfig({
@@ -42,7 +41,7 @@ module.exports = function (grunt) {
         },
 
         // Configuration to be run (and then tested).
-        inline_angular_templates: {
+        'inline_angular_templates': {
             default: {
                 files: {
                     'tmp/default.html': [
@@ -51,7 +50,7 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            custom_replaceWith: {
+            'custom_replaceWith': {
                 options: {
                     base: 'test/fixtures',
                     prefix: '/',
@@ -65,7 +64,7 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            custom_append: {
+            'custom_append': {
                 options: {
                     base: 'test/fixtures',
                     prefix: '/',
@@ -79,7 +78,7 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            custom_before: {
+            'custom_before': {
                 options: {
                     base: 'test/fixtures',
                     prefix: '/',
@@ -93,7 +92,7 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            custom_after: {
+            'custom_after': {
                 options: {
                     base: 'test/fixtures',
                     prefix: '/',
@@ -107,17 +106,17 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            custom_unescape: {
+            'custom_unescape': {
                 options: {
                     base: 'test/fixtures',
                     prefix: '/',
                     selector: '#templates',
                     method: 'append',
-                    unescape:{
-                      "&lt;": "<",
-                      "&gt;": ">",
-                      "&apos;": "'",
-                      "&amp;": "&",
+                    unescape: {
+                        '&lt;': '<',
+                        '&gt;': '>',
+                        '&apos;': '\'',
+                        '&amp;': '&'
                     }
                 },
                 files: {
@@ -126,7 +125,7 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            no_munging_attribute_names: {
+            'no_munging_attribute_names': {
                 options: {
                     base: 'text/fixtures',
                     prefix: '/',
@@ -135,7 +134,7 @@ module.exports = function (grunt) {
                 files: {
                     'tmp/no-munging-attribute-names.html': [
                         'test/fixtures/templates/template1.html',
-                        'test/fixtures/templates/template2.html',
+                        'test/fixtures/templates/template2.html'
                     ]
                 }
             }

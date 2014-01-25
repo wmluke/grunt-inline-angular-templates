@@ -23,22 +23,15 @@ module.exports = function (grunt) {
         });
 
         // Replace characters according to 'unescape' option
-        var unescapeCharacters = function(raw_html){
-          var match_keys = Object.keys(options.unescape);
-          var unescaped_html = raw_html;
-          // Generating RegExp from 'option.unescape' keys
-          var _generateRegexp = function(chars){
-            return new RegExp("(" + chars.join("|") + ")", "g");
-          };
-          // Get substitution character
-          var _fitCharacter = function(match){
-            return options.unescape[match];
-          };
-          if(match_keys.length > 0){
-            var pattern = _generateRegexp(match_keys);
-            unescaped_html = raw_html.replace(pattern, _fitCharacter);
-          }
-          return unescaped_html;
+        var unescapeCharacters = function (rawHtml) {
+            var matchKeys = Object.keys(options.unescape);
+            if (matchKeys.length === 0) {
+                return rawHtml;
+            }
+            var pattern = new RegExp('(' + matchKeys.join('|') + ')', 'g');
+            return rawHtml.replace(pattern, function (match) {
+                return options.unescape[match];
+            });
         };
 
         // Iterate over all specified file groups.
