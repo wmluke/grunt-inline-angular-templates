@@ -35,7 +35,8 @@ module.exports = function (grunt) {
                     {src: ['test/fixtures/index.html'], dest: 'tmp/custom-append.html'},
                     {src: ['test/fixtures/index.html'], dest: 'tmp/custom-before.html'},
                     {src: ['test/fixtures/index.html'], dest: 'tmp/custom-after.html'},
-                    {src: ['test/fixtures/no-munging-attribute-names.html'], dest: 'tmp/no-munging-attribute-names.html'},
+                    {src: ['test/fixtures/index_unescape.html'], dest: 'tmp/custom-unescape.html'},
+                    {src: ['test/fixtures/no-munging-attribute-names.html'], dest: 'tmp/no-munging-attribute-names.html'}
                 ]
             }
         },
@@ -102,6 +103,25 @@ module.exports = function (grunt) {
                 files: {
                     'tmp/custom-after.html': [
                         'test/fixtures/templates/template1.html',
+                        'test/fixtures/templates/template2.html'
+                    ]
+                }
+            },
+            custom_unescape: {
+                options: {
+                    base: 'test/fixtures',
+                    prefix: '/',
+                    selector: '#templates',
+                    method: 'append',
+                    unescape:{
+                      "&lt;": "<",
+                      "&gt;": ">",
+                      "&apos;": "'",
+                      "&amp;": "&",
+                    }
+                },
+                files: {
+                    'tmp/custom-unescape.html': [
                         'test/fixtures/templates/template2.html'
                     ]
                 }

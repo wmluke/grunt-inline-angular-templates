@@ -18,8 +18,28 @@ module.exports = function (grunt) {
             base: process.cwd(),
             prefix: '',
             selector: 'body',
-            method: 'prepend'
+            method: 'prepend',
+            unescape: {}
         });
+
+        // Replace characters according to 'unescape' option
+        var unescapeCharacters = function(raw_html){
+          var match_keys = Object.keys(options.unescape);
+          var unescaped_html = raw_html;
+          // Generating RegExp from 'option.unescape' keys
+          var _generateRegexp = function(chars){
+            return new RegExp("(" + chars.join("|") + ")", "g");
+          };
+          // Get substitution character
+          var _fitCharacter = function(match){
+            return options.unescape[match];
+          };
+          if(match_keys.length > 0){
+            var pattern = _generateRegexp(match_keys);
+            unescaped_html = raw_html.replace(pattern, _fitCharacter);
+          }
+          return unescaped_html;
+        };
 
         // Iterate over all specified file groups.
         this.files.forEach(function (f) {
@@ -48,8 +68,8 @@ module.exports = function (grunt) {
             var $elem = $(options.selector);
             var method = $elem[options.method] || $elem.prepend;
             method.call($elem, '\n\n<!-- Begin Templates -->\n' + src + '\n<!-- End Templates -->\n\n');
-
-            grunt.file.write(f.dest, $.html());
+            var html = unescapeCharacters($.html());
+            grunt.file.write(f.dest, html);
 
             grunt.log.writeln('Templates inserted into "' + f.dest + '".');
         });

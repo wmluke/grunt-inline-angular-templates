@@ -63,6 +63,14 @@ exports.inline_angular_templates = {
         test.ok(actual.indexOf('data-ng-app')!==-1, 'attribute names should not be munged');
 
         test.done();
-    }
+    },
+    custom_options_unescape: function (test) {
+        test.expect(1);
 
+        var actual = grunt.file.read('tmp/custom-unescape.html');
+        var expected = grunt.file.read('test/expected/custom-unescape');
+        test.equal(stripBlankLines(actual), stripBlankLines(expected));
+
+        test.done();
+    },
 };
