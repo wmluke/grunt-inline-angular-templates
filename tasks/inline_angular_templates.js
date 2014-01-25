@@ -28,14 +28,7 @@ module.exports = function (grunt) {
           var unescaped_html = raw_html;
           // Generating RegExp from 'option.unescape' keys
           var _generateRegexp = function(chars){
-            var ribbon = "";
-            chars.forEach(function(item, index){
-              ribbon += item;
-              if(index !== chars.length - 1){
-                ribbon += "|";
-              }
-            });
-            return new RegExp("(" + ribbon + ")", "g");
+            return new RegExp("(" + chars.join("|") + ")", "g");
           };
           // Get substitution character
           var _fitCharacter = function(match){
