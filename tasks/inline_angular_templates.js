@@ -34,7 +34,7 @@ module.exports = function (grunt) {
     // Iterate over all specified file groups.
     this.files.forEach(function (f) {
       // Concat specified files.
-      var spacer = options.minify ? '' : '\n\n',
+      var spacer = options.minify ? '\n' : '\n\n',
         src = f.src
           .filter(function (filepath) {
             // Warn on and remove invalid source files (if nonull was set).
@@ -46,8 +46,12 @@ module.exports = function (grunt) {
             }
           })
           .map(function (filepath) {
-            var path = options.onlyPath ? filepath : path.relative(options.base, filepath);
-            var templateUrl = path.join(options.prefix, path).replace(/\\/g, '/');
+          	var templateUrl;
+            if (options.onlyPath) {
+	            templateUrl = options.prefix + filepath;
+            } else {
+	            templateUrl = path.join(options.prefix, path.relative(options.base, filepath)).replace(/\\/g, '/');
+            }
             return '<script type="text/ng-template" id="' + templateUrl + '">\n' + grunt.file.read(filepath) + '\n</script>';
           }).join(spacer);
       var $ = cheerio.load(grunt.file.read(f.dest), {
