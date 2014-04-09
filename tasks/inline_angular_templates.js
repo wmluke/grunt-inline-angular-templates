@@ -48,11 +48,15 @@ module.exports = function (grunt) {
           .map(function (filepath) {
           	var templateUrl;
             if (options.onlyPath) {
-	            templateUrl = options.prefix + filepath;
+	            templateUrl = options.prefix + filepath.substring(filepath.indexOf('/') + 1);
             } else {
 	            templateUrl = path.join(options.prefix, path.relative(options.base, filepath)).replace(/\\/g, '/');
             }
-            return '<script type="text/ng-template" id="' + templateUrl + '">\n' + grunt.file.read(filepath) + '\n</script>';
+            if (options.minify) {
+            	return '<script type="text/ng-template" id="' + templateUrl + '">' + grunt.file.read(filepath) + '</script>';
+            } else {
+            	return '<script type="text/ng-template" id="' + templateUrl + '">\n' + grunt.file.read(filepath) + '\n</script>';
+            }
           }).join(spacer);
       var $ = cheerio.load(grunt.file.read(f.dest), {
         ignoreWhitespace: false,
