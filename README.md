@@ -107,11 +107,11 @@ The DOM method used to insert the templates.
 Type: `Object`
 Default value: '{}'
 
+List of escaped characters to unescape.
+
 #### options.defer
 Type: `Bool`
-Default value: 'false'
-
-List of escaped characters to unescape.
+Default value: true | false (default)
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
