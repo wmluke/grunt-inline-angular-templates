@@ -72,5 +72,23 @@ exports.inlineAngularTemplates = {
         test.equal(stripBlankLines(actual), stripBlankLines(expected));
 
         test.done();
+    },
+    deferNotPresent: function (test) {
+        test.expect(1);
+
+        var actual = grunt.file.read('tmp/defer-not-present.html');
+        var expected = grunt.file.read('test/expected/defer-not-present.html');
+        test.equal(stripBlankLines(actual), stripBlankLines(expected));
+
+        test.done();
+    },
+    deferPresent: function (test) {
+        test.expect(1);
+
+        var actual = grunt.file.read('tmp/defer-present.html');
+        var expected = grunt.file.read('test/expected/defer-present.html');
+        test.equal(stripBlankLines(actual), stripBlankLines(expected));
+
+        test.done();
     }
 };

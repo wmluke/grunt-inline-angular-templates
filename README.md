@@ -33,7 +33,8 @@ grunt.initConfig({
                 base: 'dist/templates', // (Optional) ID of the <script> tag will be relative to this folder. Default is project dir.
                 prefix: '/',            // (Optional) Prefix path to the ID. Default is empty string.
                 selector: 'body',       // (Optional) CSS selector of the element to use to insert the templates. Default is `body`.
-                method: 'prepend',       // (Optional) DOM insert method. Default is `prepend`.
+                method: 'prepend',      // (Optional) DOM insert method. Default is `prepend`.
+                defer: false,           // (Optional) add defer attribute to script element.
                 unescape: {             // (Optional) List of escaped characters to unescape
                     '&lt;': '<',
                     '&gt;': '>',
