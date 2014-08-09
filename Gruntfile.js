@@ -37,7 +37,8 @@ module.exports = function (grunt) {
                     {src: ['test/fixtures/index_unescape.html'], dest: 'tmp/custom-unescape.html'},
                     {src: ['test/fixtures/no-munging-attribute-names.html'], dest: 'tmp/no-munging-attribute-names.html'},
                     {src: ['test/fixtures/index.html'], dest: 'tmp/defer-not-present.html'},
-                    {src: ['test/fixtures/index.html'], dest: 'tmp/defer-present.html'}
+                    {src: ['test/fixtures/index.html'], dest: 'tmp/defer-present.html'},
+                    {src: ['test/fixtures/index.html'], dest: 'tmp/comments-disabled.html'}
                 ]
             }
         },
@@ -162,6 +163,20 @@ module.exports = function (grunt) {
                 },
                 files: {
                     'tmp/defer-present.html': [
+                        'test/fixtures/templates/template1.html',
+                        'test/fixtures/templates/template2.html'
+                    ]
+                }
+            },
+            'commentsDisabled': {
+                options: {
+                    base: 'text/fixtures',
+                    prefix: '/',
+                    selector: '#templates',
+                    comments: false
+                },
+                files: {
+                    'tmp/comments-disabled.html': [
                         'test/fixtures/templates/template1.html',
                         'test/fixtures/templates/template2.html'
                     ]

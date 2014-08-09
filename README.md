@@ -113,5 +113,13 @@ List of escaped characters to unescape.
 Type: `Bool`
 Default value: true | false (default)
 
+Add the defer attribute to the script element to defer parsing by supported browser
+
+#### options.comments
+type: `Bool`
+Default value: true (default) | false
+
+Option to disable the comments output in the html file
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).

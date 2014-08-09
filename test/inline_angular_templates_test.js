@@ -90,5 +90,14 @@ exports.inlineAngularTemplates = {
         test.equal(stripBlankLines(actual), stripBlankLines(expected));
 
         test.done();
+    },
+    commentsDisabled: function (test) {
+        test.expect(1);
+
+        var actual = grunt.file.read('tmp/comments-disabled.html');
+        var expected = grunt.file.read('test/expected/comments-disabled.html');
+        test.equal(stripBlankLines(actual), stripBlankLines(expected));
+
+        test.done();
     }
 };

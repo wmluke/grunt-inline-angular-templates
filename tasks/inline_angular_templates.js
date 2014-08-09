@@ -20,7 +20,8 @@ module.exports = function (grunt) {
             selector: 'body',
             method: 'prepend',
             unescape: {},
-            defer: false
+            defer: false,
+            comments: true
         });
 
         // Replace characters according to 'unescape' option
@@ -62,7 +63,8 @@ module.exports = function (grunt) {
 
             var $elem = $(options.selector);
             var method = $elem[options.method] || $elem.prepend;
-            method.call($elem, '\n\n<!-- Begin Templates -->\n' + src + '\n<!-- End Templates -->\n\n');
+            var comments = options.comments ? ['\n\n<!-- Begin Templates -->\n', '\n<!-- End Templates -->\n\n'] : ['', ''];
+            method.call($elem, comments[0] + src + comments[1]);
             var html = unescapeCharacters($.html());
             grunt.file.write(f.dest, html);
 
