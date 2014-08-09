@@ -19,7 +19,8 @@ module.exports = function (grunt) {
             prefix: '',
             selector: 'body',
             method: 'prepend',
-            unescape: {}
+            unescape: {},
+            defer: false
         });
 
         // Replace characters according to 'unescape' option
@@ -49,7 +50,7 @@ module.exports = function (grunt) {
                 })
                 .map(function (filepath) {
                     var templateUrl = path.join(options.prefix, path.relative(options.base, filepath)).replace(/\\/g, '/'),
-                        deferModifier = options.defer ? 'defer="defer" ' : ' ';
+                        deferModifier = options.defer ? 'defer="defer" ' : '';
                     return '<script type="text/ng-template" ' + deferModifier + 'id="' + templateUrl + '">\n' + grunt.file.read(filepath) + '\n</script>';
                 }).join('\n\n');
 
