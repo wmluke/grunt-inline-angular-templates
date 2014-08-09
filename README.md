@@ -107,6 +107,10 @@ The DOM method used to insert the templates.
 Type: `Object`
 Default value: '{}'
 
+#### options.defer
+Type: `Bool`
+Default value: 'false'
+
 List of escaped characters to unescape.
 
 ## Contributing
