@@ -41,8 +41,8 @@ module.exports = function (grunt) {
         },
 
         // Configuration to be run (and then tested).
-        'inline_angular_templates': {
-            default: {
+        'inlineAngularTemplates': {
+            'default': {
                 files: {
                     'tmp/default.html': [
                         'test/fixtures/templates/template1.html',
@@ -50,7 +50,7 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            'custom_replaceWith': {
+            'customReplaceWith': {
                 options: {
                     base: 'test/fixtures',
                     prefix: '/',
@@ -64,7 +64,7 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            'custom_append': {
+            'customAppend': {
                 options: {
                     base: 'test/fixtures',
                     prefix: '/',
@@ -78,7 +78,7 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            'custom_before': {
+            'customBefore': {
                 options: {
                     base: 'test/fixtures',
                     prefix: '/',
@@ -92,7 +92,7 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            'custom_after': {
+            'customAfter': {
                 options: {
                     base: 'test/fixtures',
                     prefix: '/',
@@ -106,7 +106,7 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            'custom_unescape': {
+            'customUnescape': {
                 options: {
                     base: 'test/fixtures',
                     prefix: '/',
@@ -125,7 +125,7 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            'no_munging_attribute_names': {
+            'noMungingAttributeNames': {
                 options: {
                     base: 'text/fixtures',
                     prefix: '/',
@@ -166,7 +166,7 @@ module.exports = function (grunt) {
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
-    grunt.registerTask('test', ['clean', 'copy', 'inline_angular_templates', 'nodeunit']);
+    grunt.registerTask('test', ['clean', 'copy', 'inlineAngularTemplates', 'nodeunit']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'test']);

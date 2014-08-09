@@ -20,14 +20,14 @@ One the plugin has been installed, it may be enabled inside your Gruntfile with 
 grunt.loadNpmTasks('grunt-inline-angular-templates');
 ```
 
-## The "inline_angular_templates" task
+## The "inlineAngulatTemplate" task
 
 ### Overview
-In your project's Gruntfile, add a section named `inline_angular_templates` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `inlineAngulatTemplate` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-    inline_angular_templates: {
+    inlineAngulatTemplate: {
         dist: {
             options: {
                 base: 'dist/templates', // (Optional) ID of the <script> tag will be relative to this folder. Default is project dir.

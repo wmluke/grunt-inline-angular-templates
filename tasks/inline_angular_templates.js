@@ -12,7 +12,7 @@ module.exports = function (grunt) {
     var cheerio = require('cheerio'),
         path = require('path');
 
-    grunt.registerMultiTask('inline_angular_templates', 'Inline angular templates into a HTML file', function () {
+    grunt.registerMultiTask('inlineAngularTemplates', 'Inline angular templates into a HTML file', function () {
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
             base: process.cwd(),
