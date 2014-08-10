@@ -35,6 +35,7 @@ grunt.initConfig({
                 selector: 'body',       // (Optional) CSS selector of the element to use to insert the templates. Default is `body`.
                 method: 'prepend',      // (Optional) DOM insert method. Default is `prepend`.
                 defer: false,           // (Optional) add defer attribute to script element.
+                comments: true,         // (optional) ability to disabled comments in output HTML.
                 unescape: {             // (Optional) List of escaped characters to unescape
                     '&lt;': '<',
                     '&gt;': '>',
