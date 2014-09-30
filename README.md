@@ -2,8 +2,7 @@
 
 > Inline angular templates into an HTML file
 
-[![Build Status](https://travis-ci.org/wmluke/grunt-inline-angular-templates.png?branch=master)](https://travis-ci.org/wmluke/grunt-inline-angular-templates)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/wmluke/grunt-inline-angular-templates/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Build Status](https://travis-ci.org/TheWoollyBully/grunt-inline-angular-templates.png?branch=master)](https://travis-ci.org/TheWoollyBully/grunt-inline-angular-templates)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -20,14 +19,14 @@ One the plugin has been installed, it may be enabled inside your Gruntfile with 
 grunt.loadNpmTasks('grunt-inline-angular-templates');
 ```
 
-## The "inlineAngulatTemplate" task
+## The "inlineAngularTemplates" task
 
 ### Overview
-In your project's Gruntfile, add a section named `inlineAngulatTemplate` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `inlineAngularTemplates` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-    inlineAngulatTemplate: {
+    inlineAngularTemplates: {
         dist: {
             options: {
                 base: 'dist/templates', // (Optional) ID of the <script> tag will be relative to this folder. Default is project dir.
