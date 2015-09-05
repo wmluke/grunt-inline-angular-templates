@@ -2,8 +2,7 @@
 
 > Inline angular templates into an HTML file
 
-[![Build Status](https://travis-ci.org/wmluke/grunt-inline-angular-templates.png?branch=master)](https://travis-ci.org/wmluke/grunt-inline-angular-templates)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/wmluke/grunt-inline-angular-templates/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Build Status](https://travis-ci.org/TheWoollyBully/grunt-inline-angular-templates.png?branch=master)](https://travis-ci.org/TheWoollyBully/grunt-inline-angular-templates)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -20,20 +19,22 @@ One the plugin has been installed, it may be enabled inside your Gruntfile with 
 grunt.loadNpmTasks('grunt-inline-angular-templates');
 ```
 
-## The "inline_angular_templates" task
+## The "inlineAngularTemplates" task
 
 ### Overview
-In your project's Gruntfile, add a section named `inline_angular_templates` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `inlineAngularTemplates` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-    inline_angular_templates: {
+    inlineAngularTemplates: {
         dist: {
             options: {
                 base: 'dist/templates', // (Optional) ID of the <script> tag will be relative to this folder. Default is project dir.
                 prefix: '/',            // (Optional) Prefix path to the ID. Default is empty string.
                 selector: 'body',       // (Optional) CSS selector of the element to use to insert the templates. Default is `body`.
-                method: 'prepend',       // (Optional) DOM insert method. Default is `prepend`.
+                method: 'prepend',      // (Optional) DOM insert method. Default is `prepend`.
+                defer: false,           // (Optional) add defer attribute to script element.
+                comments: true,         // (optional) ability to disabled comments in output HTML.
                 unescape: {             // (Optional) List of escaped characters to unescape
                     '&lt;': '<',
                     '&gt;': '>',
@@ -108,5 +109,41 @@ Default value: '{}'
 
 List of escaped characters to unescape.
 
+#### options.defer
+Type: `Bool`
+Default value: true | false (default)
+
+Add the defer attribute to the script element to defer parsing by supported browser
+
+#### options.comments
+type: `Bool`
+Default value: true (default) | false
+
+Option to disable the comments output in the html file
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+
+##LICENSE
+
+The MIT License (MIT)
+
+Copyright (c) 2015 Joshua L. Morris
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

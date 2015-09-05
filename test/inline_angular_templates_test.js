@@ -6,12 +6,12 @@ function stripBlankLines(content) {
     return content.replace(/^\s+$/gm, '');
 }
 
-exports.inline_angular_templates = {
+exports.inlineAngularTemplates = {
     setUp: function (done) {
         // setup here if necessary
         done();
     },
-    default_options: function (test) {
+    defaultOptions: function (test) {
         test.expect(1);
 
         var actual = grunt.file.read('tmp/default.html');
@@ -20,7 +20,7 @@ exports.inline_angular_templates = {
 
         test.done();
     },
-    custom_options_replaceWith: function (test) {
+    customOptionsReplaceWith: function (test) {
         test.expect(1);
 
         var actual = grunt.file.read('tmp/custom-replaceWith.html');
@@ -29,7 +29,7 @@ exports.inline_angular_templates = {
 
         test.done();
     },
-    custom_options_append: function (test) {
+    customOptionsAppend: function (test) {
         test.expect(1);
 
         var actual = grunt.file.read('tmp/custom-append.html');
@@ -38,7 +38,7 @@ exports.inline_angular_templates = {
 
         test.done();
     },
-    custom_options_after: function (test) {
+    customOptionsAfter: function (test) {
         test.expect(1);
 
         var actual = grunt.file.read('tmp/custom-after.html');
@@ -47,7 +47,7 @@ exports.inline_angular_templates = {
 
         test.done();
     },
-    custom_options_before: function (test) {
+    customOptionsBefore: function (test) {
         test.expect(1);
 
         var actual = grunt.file.read('tmp/custom-before.html');
@@ -56,7 +56,7 @@ exports.inline_angular_templates = {
 
         test.done();
     },
-    no_munging_attribute_names: function (test) {
+    noMungingAttributeNames: function (test) {
         test.expect(1);
 
         var actual = grunt.file.read('tmp/no-munging-attribute-names.html');
@@ -64,7 +64,7 @@ exports.inline_angular_templates = {
 
         test.done();
     },
-    custom_options_unescape: function (test) {
+    customOptionsUnescape: function (test) {
         test.expect(1);
 
         var actual = grunt.file.read('tmp/custom-unescape.html');
@@ -73,4 +73,31 @@ exports.inline_angular_templates = {
 
         test.done();
     },
+    deferNotPresent: function (test) {
+        test.expect(1);
+
+        var actual = grunt.file.read('tmp/defer-not-present.html');
+        var expected = grunt.file.read('test/expected/defer-not-present.html');
+        test.equal(stripBlankLines(actual), stripBlankLines(expected));
+
+        test.done();
+    },
+    deferPresent: function (test) {
+        test.expect(1);
+
+        var actual = grunt.file.read('tmp/defer-present.html');
+        var expected = grunt.file.read('test/expected/defer-present.html');
+        test.equal(stripBlankLines(actual), stripBlankLines(expected));
+
+        test.done();
+    },
+    commentsDisabled: function (test) {
+        test.expect(1);
+
+        var actual = grunt.file.read('tmp/comments-disabled.html');
+        var expected = grunt.file.read('test/expected/comments-disabled.html');
+        test.equal(stripBlankLines(actual), stripBlankLines(expected));
+
+        test.done();
+    }
 };

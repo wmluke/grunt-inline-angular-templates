@@ -12,14 +12,16 @@ module.exports = function (grunt) {
     var cheerio = require('cheerio'),
         path = require('path');
 
-    grunt.registerMultiTask('inline_angular_templates', 'Inline angular templates into a HTML file', function () {
+    grunt.registerMultiTask('inlineAngularTemplates', 'Inline angular templates into a HTML file', function () {
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
             base: process.cwd(),
             prefix: '',
             selector: 'body',
             method: 'prepend',
-            unescape: {}
+            unescape: {},
+            defer: false,
+            comments: true
         });
 
         // Replace characters according to 'unescape' option
@@ -48,8 +50,9 @@ module.exports = function (grunt) {
                     }
                 })
                 .map(function (filepath) {
-                    var templateUrl = path.join(options.prefix, path.relative(options.base, filepath)).replace(/\\/g, '/');
-                    return '<script type="text/ng-template" id="' + templateUrl + '">\n' + grunt.file.read(filepath) + '\n</script>';
+                    var templateUrl = path.join(options.prefix, path.relative(options.base, filepath)).replace(/\\/g, '/'),
+                        deferModifier = options.defer ? 'defer="defer" ' : '';
+                    return '<script type="text/ng-template" ' + deferModifier + 'id="' + templateUrl + '">\n' + grunt.file.read(filepath) + '\n</script>';
                 }).join('\n\n');
 
             var $ = cheerio.load(grunt.file.read(f.dest), {
@@ -60,7 +63,8 @@ module.exports = function (grunt) {
 
             var $elem = $(options.selector);
             var method = $elem[options.method] || $elem.prepend;
-            method.call($elem, '\n\n<!-- Begin Templates -->\n' + src + '\n<!-- End Templates -->\n\n');
+            var comments = options.comments ? ['\n\n<!-- Begin Templates -->\n', '\n<!-- End Templates -->\n\n'] : ['', ''];
+            method.call($elem, comments[0] + src + comments[1]);
             var html = unescapeCharacters($.html());
             grunt.file.write(f.dest, html);
 
